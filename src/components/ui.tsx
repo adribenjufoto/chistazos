@@ -98,15 +98,6 @@ export function ScreenTitle({ children, color = colors.ink }: { children: ReactN
   return <Text style={[styles.title, { color }]}>{children}</Text>;
 }
 
-// Hueco reservado para el banner de AdMob.
-export function AdSlot() {
-  return (
-    <View style={styles.ad}>
-      <Text style={styles.adText}>Espacio publicitario</Text>
-    </View>
-  );
-}
-
 const styles = StyleSheet.create({
   pill: { borderRadius: radius.pill, paddingVertical: 16, paddingHorizontal: 24, alignItems: 'center' },
   pillText: { fontFamily: fonts.bold, fontSize: 17 },
@@ -118,16 +109,4 @@ const styles = StyleSheet.create({
   shareBtn: { flex: 1, height: 48, borderRadius: 24, alignItems: 'center', justifyContent: 'center' },
   shareText: { fontFamily: fonts.bold, fontSize: 16 },
   title: { fontFamily: fonts.display, fontSize: 40, lineHeight: 42, letterSpacing: -1 },
-  ad: {
-    height: 56,
-    marginHorizontal: 16,
-    marginBottom: 8,
-    borderRadius: 14,
-    borderWidth: 1.5,
-    borderStyle: 'dashed',
-    borderColor: colors.line,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  adText: { fontFamily: fonts.medium, color: colors.inkSoft, fontSize: 12 },
 });
