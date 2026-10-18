@@ -5,7 +5,7 @@
 export const AD_UNITS = {
   android: {
     banner: 'ca-app-pub-6660144113673128/2362886487' as string | null,
-    interstitial: null as string | null,
+    interstitial: 'ca-app-pub-6660144113673128/1359876138' as string | null,
   },
   ios: {
     banner: null as string | null,
