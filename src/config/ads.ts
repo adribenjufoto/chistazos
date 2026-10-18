@@ -4,7 +4,7 @@
 // y los App ID en app.json (plugin react-native-google-mobile-ads).
 export const AD_UNITS = {
   android: {
-    banner: null as string | null,
+    banner: 'ca-app-pub-6660144113673128/2362886487' as string | null,
     interstitial: null as string | null,
   },
   ios: {
