@@ -25,7 +25,21 @@
     },
     "plugins": [
       "expo-font",
-      "expo-notifications"
+      "expo-notifications",
+      [
+        "expo-tracking-transparency",
+        {
+          "userTrackingPermission": "Usamos este permiso para mostrarte anuncios más relevantes. Los chistes son gratis gracias a la publicidad."
+        }
+      ],
+      [
+        "react-native-google-mobile-ads",
+        {
+          "androidAppId": "ca-app-pub-3940256099942544~3347511713",
+          "iosAppId": "ca-app-pub-3940256099942544~1458002511",
+          "delayAppMeasurementInit": true
+        }
+      ]
     ],
     "backgroundColor": "#FFF4E3"
   }

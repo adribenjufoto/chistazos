@@ -1,5 +1,7 @@
-import { Alert, Pressable, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
+import { Alert, Linking, Pressable, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
 import { ScreenTitle } from '../components/ui';
+import { PRIVACY_URL } from '../config/ads';
+import { openPrivacyOptions, usePrivacyOptionsRequired } from '../lib/ads';
 import { cancelDailyJoke, scheduleDailyJoke } from '../lib/notifications';
 import { useStore } from '../lib/store';
 import { colors, fonts, radius } from '../theme';
@@ -8,6 +10,7 @@ const pad = (n: number) => String(n).padStart(2, '0');
 
 export function SettingsScreen() {
   const { notifications, setNotifications, adultOk, setAdultOk } = useStore();
+  const privacyOptions = usePrivacyOptionsRequired();
 
   const apply = async (enabled: boolean, hour: number) => {
     if (!enabled) {
@@ -56,8 +59,21 @@ export function SettingsScreen() {
       </View>
 
       <View style={styles.section}>
-        {/* TODO: enlazar la política de privacidad publicada y el formulario de consentimiento de anuncios (UMP). */}
-        <Row label="Privacidad y anuncios" sub="Política de privacidad y consentimiento." />
+        <Pressable onPress={() => PRIVACY_URL && Linking.openURL(PRIVACY_URL)} disabled={!PRIVACY_URL}>
+          <Row label="Política de privacidad" sub={PRIVACY_URL ? 'Qué datos usamos y para qué.' : 'Disponible próximamente.'}>
+            {PRIVACY_URL && <Text style={styles.chevron}>›</Text>}
+          </Row>
+        </Pressable>
+        {privacyOptions && (
+          <>
+            <View style={styles.divider} />
+            <Pressable onPress={openPrivacyOptions}>
+              <Row label="Gestionar consentimiento" sub="Cambia tus preferencias de anuncios.">
+                <Text style={styles.chevron}>›</Text>
+              </Row>
+            </Pressable>
+          </>
+        )}
         <View style={styles.divider} />
         <Row label="Versión" sub="1.0.0" />
       </View>
@@ -95,5 +111,6 @@ const styles = StyleSheet.create({
   stepper: { flexDirection: 'row', alignItems: 'center', gap: 10 },
   step: { width: 36, height: 36, borderRadius: 18, backgroundColor: colors.cream, alignItems: 'center', justifyContent: 'center' },
   stepText: { fontFamily: fonts.bold, fontSize: 20, color: colors.ink },
+  chevron: { fontFamily: fonts.bold, fontSize: 24, color: colors.inkSoft },
   time: { fontFamily: fonts.display, fontSize: 20, color: colors.ink, minWidth: 60, textAlign: 'center' },
 });

@@ -1,16 +1,19 @@
-// Punto único para la publicidad. Mientras no esté integrado AdMob
-// (react-native-google-mobile-ads, requiere development build), estas funciones
-// no hacen nada y AdSlot muestra un hueco reservado.
+// Versión web y de respaldo: sin anuncios. La versión real está en ads.native.ts.
+import { useSyncExternalStore } from 'react';
 
-export const INTERSTITIAL_EVERY = 8;
+export async function initAds(): Promise<void> {}
 
-let jokesSeen = 0;
+export function onJokeViewed(): void {}
 
-// Llamar cada vez que el usuario pasa a otro chiste. Cuando toque, mostrará un
-// intersticial (nunca en el chiste del día ni al abrir la app).
-export function onJokeViewed(): void {
-  jokesSeen += 1;
-  if (jokesSeen % INTERSTITIAL_EVERY === 0) {
-    // TODO(admob): mostrar intersticial cargado previamente.
-  }
+export function useAdsReady(): boolean {
+  return useSyncExternalStore(
+    () => () => {},
+    () => false,
+  );
 }
+
+export function usePrivacyOptionsRequired(): boolean {
+  return false;
+}
+
+export async function openPrivacyOptions(): Promise<void> {}

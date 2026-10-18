@@ -6,11 +6,12 @@ import {
   useFonts,
 } from '@expo-google-fonts/bricolage-grotesque';
 import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { AdSlot } from './src/components/ui';
+import { AdBanner } from './src/components/AdBanner';
 import type { CategoryId } from './src/data/categories';
+import { initAds } from './src/lib/ads';
 import { StoreProvider, useStore } from './src/lib/store';
 import { CategoriesScreen } from './src/screens/CategoriesScreen';
 import { FavoritesScreen } from './src/screens/FavoritesScreen';
@@ -48,6 +49,10 @@ function Main() {
   const [tab, setTab] = useState<Tab>('hoy');
   const [reading, setReading] = useState<CategoryId | null>(null);
 
+  useEffect(() => {
+    initAds();
+  }, []);
+
   if (!ready) return <View style={styles.root} />;
 
   if (reading) {
@@ -68,7 +73,7 @@ function Main() {
         {tab === 'favoritos' && <FavoritesScreen />}
         {tab === 'ajustes' && <SettingsScreen />}
       </View>
-      <AdSlot />
+      <AdBanner />
       <View style={styles.tabBar}>
         {TABS.map((t) => {
           const active = t.id === tab;
