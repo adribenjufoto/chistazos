@@ -10,7 +10,7 @@ App de chistes en español con chiste del día, categorías (cortos, largos, hum
 
 ## Dónde está cada cosa
 
-- `src/data/jokes.ts`: los chistes. Añade los nuevos **al final** de cada categoría para no cambiar los ids de los favoritos.
+- `content/<categoría>.txt`: los chistes (más de 500), uno por bloque separados por una línea en blanco. Añade los nuevos **al final** para no cambiar los ids de los favoritos y después ejecuta `npm run jokes`, que regenera `src/data/jokes.generated.ts`.
 - `src/data/categories.ts`: categorías, colores y personajes.
 - `src/lib/daily.ts`: elección del chiste del día (igual para todos los usuarios).
 - `src/lib/ads.ts` y `AdSlot` en `src/components/ui.tsx`: huecos preparados para AdMob.
