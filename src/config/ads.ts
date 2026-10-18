@@ -8,7 +8,7 @@ export const AD_UNITS = {
     interstitial: 'ca-app-pub-6660144113673128/1359876138' as string | null,
   },
   ios: {
-    banner: null as string | null,
+    banner: 'ca-app-pub-6660144113673128/4797478139' as string | null,
     interstitial: null as string | null,
   },
 };
