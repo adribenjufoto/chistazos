@@ -20,7 +20,6 @@ App de chistes en español con chiste del día, categorías (cortos, largos, hum
 
 ## Pendiente
 
-- Poner los App ID reales de AdMob en `app.json` y los IDs de bloques en `src/config/ads.ts`.
 - Rellenar y publicar `docs/privacidad.md` en una URL pública y ponerla en `PRIVACY_URL`.
 - Configurar el mensaje de consentimiento RGPD en AdMob (Privacidad y mensajes) para que aparezca el formulario.
 - Icono y pantalla de carga propios.
